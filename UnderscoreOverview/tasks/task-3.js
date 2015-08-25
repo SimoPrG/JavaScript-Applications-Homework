@@ -11,7 +11,18 @@ Create a function that:
 */
 
 function solve(){
+  'use strict';
+
+  function reduceSum(sum, current) {
+    return sum + current;
+  }
+
   return function (students) {
+    var s = _.chain(students).sortBy(function (student) {
+        return _.reduce(student.marks, reduceSum)/student.marks.length;
+    }).last().value();
+
+    console.log(s.firstName + ' ' + s.lastName + ' has an average score of ' + _.reduce(s.marks, reduceSum)/ s.marks.length);
   };
 }
 
