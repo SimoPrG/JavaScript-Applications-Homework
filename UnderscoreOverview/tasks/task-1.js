@@ -12,6 +12,17 @@ Create a function that:
 
 function solve(){
   return function (students) {
+    var studentsWithFirstNameBeforeLastName = _.filter(students, function (student) {
+        return student.firstName < student.lastName;
+    });
+
+    var sortedStudents = _.sortBy(studentsWithFirstNameBeforeLastName, function (student) {
+        return student.firstName + student.lastName;
+    }).reverse();
+
+    _.each(sortedStudents, function (student) {
+        console.log(student.firstName + ' ' + student.lastName);
+    })
   };
 }
 
