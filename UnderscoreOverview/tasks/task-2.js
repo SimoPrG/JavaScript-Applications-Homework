@@ -9,7 +9,15 @@ Create a function that:
 */
 
 function solve(){
+  'use strict';
   return function (students) {
+    _.chain(students).filter(function (student) {
+        return 18 <= student.age && student.age <= 24;
+    }).sortBy(function (student) {
+        return student.firstName + student.lastName;
+    }).each(function (student) {
+        console.log(student.firstName + ' ' + student.lastName);
+    })
   };
 }
 
